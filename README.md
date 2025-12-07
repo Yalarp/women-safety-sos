@@ -2,6 +2,7 @@
 
 A robust, real-time web application designed to ensure personal safety. In an emergency, a single click triggers an SOS alert, sending your live geolocation to emergency contacts and administrators via email.
 
+https://women-safety-sos-backend-yalarps-projects.vercel.app/
 
 ## 🚀 Key Features
 
