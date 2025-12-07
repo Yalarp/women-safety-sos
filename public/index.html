@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Safety SOS | Immediate Help</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"
+        integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Women's Safety SOS</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#community">Community</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <!-- Guest Links -->
+            <div id="guest-links" class="auth-links">
+                <a href="login.html" class="btn-login">Login</a>
+                <a href="register.html" class="btn-register">Register</a>
+            </div>
+            <!-- User Links (Hidden by default) -->
+            <div id="user-links" class="auth-links" style="display: none;">
+                <span id="welcome-msg" style="margin-right: 10px; font-weight: 600;"></span>
+                <a href="/dashboard" class="btn-login">Dashboard</a>
+                <a href="/logout" class="btn-register" style="background: #334155;">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h2>Your Safety, Just a Click Away</h2>
+                <p>Immediate assistance when you need it most. Press the SOS button to alert your emergency contacts
+                    with your live location instantly.</p>
+                <div class="sos-btn-container">
+                    <button id="alertButton" class="btn-sos">Send SOS Alert</button>
+                    <!-- Ripple effect handled by CSS pseudo-elements -->
+                </div>
+            </div>
+        </section>
+
+        <section id="resources" class="section-padding">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Safety Resources & Tips</h2>
+                    <p>Essential knowledge to keep you prepared and aware.</p>
+                </div>
+
+                <div class="resources-grid">
+                    <div class="card">
+                        <h3>General Safety</h3>
+                        <ul>
+                            <li>Stay aware of your surroundings; avoid distractions like phone use while walking alone.
+                            </li>
+                            <li>Trust your instincts; if a situation feels unsafe, leave immediately.</li>
+                            <li>Share your live location with trusted friends or family when traveling.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Emergency Prep</h3>
+                        <ul>
+                            <li>Keep your phone charged and carry a portable power bank.</li>
+                            <li>Memorize key emergency contacts and local helpline numbers.</li>
+                            <li>Have a "safety word" with friends for discreet distress signaling.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Self Defense</h3>
+                        <ul>
+                            <li>Carry a personal safety alarm or whistle.</li>
+                            <li>Consider taking a self-defense class to learn basic protection techniques.</li>
+                            <li>Use keys or other objects as makeshift defense tools if necessary.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="map-section" class="section-padding" style="background-color: white;">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Live Location Tracking</h2>
+                    <p>Your location is encrypted and only shared with selected contacts during an alert.</p>
+                </div>
+                <div id="map"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Women's Safety SOS. Built for safety & trust.</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"
+        integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+        integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Women's Safety SOS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Dashboard</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/emergency-contacts">Contacts</a></li>
+                    <li><a href="/logout">Logout</a></li> <!-- Assuming logout route or just link back -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container section-padding" style="margin-top: 60px;">
+        <div class="card" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h2>Welcome Back</h2>
+            <p>You are now logged in. Your safety is our priority.</p>
+
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="/emergency-contacts" class="btn-sos"
+                    style="padding: 1rem 2rem; font-size: 1rem; text-decoration: none; display: inline-block;">Manage
+                    Contacts</a>
+                <a href="/" class="btn-sos"
+                    style="background: var(--secondary-color); padding: 1rem 2rem; font-size: 1rem; text-decoration: none; display: inline-block;">Go
+                    to Home</a>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

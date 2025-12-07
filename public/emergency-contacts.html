@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Contacts | Women's Safety SOS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-email {
+            font-weight: 500;
+        }
+
+        .btn-delete {
+            background: #EF4444;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .add-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .add-form input {
+            flex: 1;
+            padding: 12px;
+            margin: 0;
+            /* Override global form margin */
+        }
+
+        .add-form button {
+            width: auto;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Women's Safety SOS</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="form-container" style="padding-top: 80px;">
+        <div
+            style="background: rgba(255,255,255,0.9); padding: 3rem; border-radius: 20px; width: 100%; max-width: 500px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
+            <h2 style="margin-bottom: 20px; color: var(--text-primary);">Emergency Contacts</h2>
+            <p style="margin-bottom: 20px; color: var(--text-secondary);">Alerts will be sent to these emails + Admin.
+            </p>
+
+            <div class="add-form">
+                <input type="email" id="newEmail" placeholder="Enter friend's email" required>
+                <button onclick="addContact()">Add</button>
+            </div>
+
+            <ul id="contactsList" class="contact-list">
+                <!-- Contacts will appear here -->
+                <li style="text-align: center; color: #666;">Loading contacts...</li>
+            </ul>
+
+            <a href="/dashboard"
+                style="display: block; text-align: center; margin-top: 20px; color: var(--primary-color);">Back to
+                Dashboard</a>
+        </div>
+    </div>
+
+    <script>
+        const listEl = document.getElementById('contactsList');
+        const inputEl = document.getElementById('newEmail');
+
+        // Fetch contacts on load
+        fetch('/api/contacts')
+            .then(res => res.json())
+            .then(data => renderList(data.contacts || []))
+            .catch(err => console.error(err));
+
+        function renderList(contacts) {
+            listEl.innerHTML = '';
+            if (contacts.length === 0) {
+                listEl.innerHTML = '<li style="text-align: center; color: #999;">No contacts added yet.</li>';
+                return;
+            }
+            contacts.forEach(email => {
+                const li = document.createElement('li');
+                li.className = 'contact-item';
+                li.innerHTML = `
+                    <span class="contact-email">${email}</span>
+                    <button class="btn-delete" onclick="removeContact('${email}')">Remove</button>
+                `;
+                listEl.appendChild(li);
+            });
+        }
+
+        function addContact() {
+            const email = inputEl.value.trim();
+            if (!email) return alert('Please enter an email');
+
+            fetch('/api/contacts/add', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error) alert(data.error);
+                    else {
+                        renderList(data.contacts);
+                        inputEl.value = '';
+                    }
+                });
+        }
+
+        function removeContact(email) {
+            if (!confirm('Remove this contact?')) return;
+
+            fetch('/api/contacts/remove', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            })
+                .then(res => res.json())
+                .then(data => renderList(data.contacts));
+        }
+    </script>
+</body>
+
+</html>
