@@ -2,7 +2,6 @@
 
 A robust, real-time web application designed to ensure personal safety. In an emergency, a single click triggers an SOS alert, sending your live geolocation to emergency contacts and administrators via email.
 
-![Project Preview](public/image.jpg) <!-- Replace with actual screenshot path if available -->
 
 ## 🚀 Key Features
 
