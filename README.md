@@ -51,13 +51,6 @@ A robust, real-time web application designed to ensure personal safety. In an em
     ```
     Visit `http://localhost:5000`
 
-## ☁️ Deployment (Vercel)
-
-This project is optimized for Vercel.
-1.  Push code to GitHub.
-2.  Import project in Vercel.
-3.  Add the Environment Variables in Vercel Settings.
-4.  Deploy!
 
 ## 🤝 Contributing
 
